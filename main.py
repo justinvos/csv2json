@@ -1,5 +1,6 @@
 import csv
 import json
+import sys
 
 def convert(csv_file_path, json_file_path):
     objs = []
@@ -15,6 +16,10 @@ def convert(csv_file_path, json_file_path):
             objs += [obj]
 
     with open(json_file_path, 'w') as output_file:
-        output_file.write(json.dumps({ 'output': objs }))
+        output_file.write(json.dumps({ 'rows': objs }))
 
-convert('panels.csv', 'panels.json')
+
+
+csv_path = sys.argv[1]
+json_path = sys.argv[2]
+convert(csv_path, json_path)
